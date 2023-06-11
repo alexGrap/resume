@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Резюме Паргасова Алексея Дмитриевича</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <div class="left-side">
+            <div class="img-container">
+                <img src="./assets/photo.jpg" alt="Me">
+            </div>
+            <div class="right-side">
+                <h1>Паргасов Алексей</h1>
+                <p>Golang backend developer</p>
+                <div class="location">
+                    <img src="./assets/location.svg" alt="_location">
+                    <p>Россия, Москва</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="social">
+            <div class="social__right">
+                <div class="social__item">
+                    <img src="./assets/telegram.svg" alt="Telegram" class="icon">
+                    <a href="https://t.me/alex_grap" target="_blank">@alex_grap</a>
+                </div>
+                <div class="social__item">
+                    <img src="./assets/email.svg" alt="Email" class="icon">
+                    <a href="mailto:al3xgrap@gmail.com">al3xgrap@gmail.com</a>
+                </div>
+            </div>
+            <div>
+                <div class="social__item">
+                    <img src="./assets/Github.svg" alt="Github" class="icon">
+                    <a href="https://github.com/alexGrap" target="_blank">github.com/alexGrap</a>
+                </div>
+            </div>
+            <div>
+                <div class="social__item">
+                    <img src="./assets/pdf.svg" alt="pdf" class="icon icon--pdf" id="icon">
+                    <button id="downloadPDF" class="download__button">Скачать PDF</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <h2 id="skills" class="section__header">Навыки</h2>
+            <ul>
+                <li>Языки программирования: Golang, C/C++, Python</li>
+                <li>Технологии: Golang fiber, grpc, rest, swagger, Docker, bash, nginx, UNIX(Linux, MacOS)</li>
+                <li>Базы данных: Redis, MySQL, PostgreSQL</li>
+                <li>Система контроля версий: Git/GitLab</li>
+                <li>Языки: Русский (родной), Английский (B2)</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2 id="experience" class="section__header">Проекты</h2>
+            <ul>
+                <li><a href="https://github.com/alexGrap/OzonIntership">GRPC/Rest-сервис генерации коротких ссылок</a></li>
+                <li><a href="https://github.com/alexGrap/InternshipVK">Веб-приложение генерации случайной "сказки на ночь" с методом автоматической генерации аудио Yandex
+                    SpeechKit
+                </a></li>
+                <li><a href="https://github.com/alexGrap/Pong">Игра "Pong" с использованием интерактивного режима двух пользователей</a></li>
+                <li><a href="https://github.com/alexGrap/Calculator">Графический калькулятор уравнений с консольным выводом графиков</a></li>
+                <li><a href="https://github.com/alexGrap/Game_Of_Number">Desktop игра "Game of Numbers" для запоминания последовательности чисел</a></li>
+                <li><a href="https://github.com/alexGrap/GameOfLife">Консольная игра "Game of life"</a></li>
+                <li><a href="https://github.com/leviathans-team/places">Веб-cервис/агрегатор для аренды креативных площадок Москвы (backend)</a></li>
+
+                <p></p>
+            </ul>
+        </section>
+
+        <section>
+            <h2 id="education" class="section__header">Образование</h2>
+            <li>2021 - 2025</li>
+            <p><strong>Московский Государственный Технологический Университет "СТАНКИН", Москва</strong></p>
+            <p>Прикладная информатика</p>
+            <li>2022-2023</li>
+            <p><strong>School 21, Сбер, Москва</strong></p>
+        </section>
+
+        <section>
+            <h2 id="additional" class="section__header">Дополнительная информация</h2>
+            <p>Основным языком программирования считаю Golang, имею опыт работы на нем в стартапе, а также в
+                создании REST/GRPC сервисов. Знаю микросервисную архитектуру, умею применять патерны проектирования.
+                Имею представление о работе с K8, RabbitMQ, nqinx. Имею опыт работы с UNIX системами(MacOS, Linux), а также с postman, insomnia,
+                bash-скриптами.</p>
+        </section>
+    </main>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+</body>
+<script>
+    document.getElementById("downloadPDF").addEventListener("click", function () {
+        const element = document.querySelector(".wrapper");
+        const button = document.getElementById("downloadPDF");
+        const img = document.getElementById("icon");
+        element.style.width = "1000px"
+        button.style.display = "none"
+        img.style.display = "none"
+
+
+        const option = {
+            filename:     'Паргасов Алексей.pdf',
+            image:        { type: 'jpeg', quality: 1 },
+            html2canvas:  { scale: 2 },
+            jsPDF:        { unit: 'in', format: 'a3', orientation: 'portrait' }
+        }
+
+
+
+        html2pdf()
+            .set(option)
+            .from(element)
+            .save();
+
+        setTimeout(() => {
+            element.style.width = "1440px";
+            button.style.display = "block";
+            img.style.display = "inline-block"
+        },0 )
+    });
+</script>
+</html>     
